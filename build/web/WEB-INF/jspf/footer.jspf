@@ -1,0 +1,13 @@
+<footer  class="w3-center w3-teal w3-padding-16">
+    <h4><b>Notes keeper</b>&nbsp;&nbsp;<i class="fa fa-sticky-note-o" aria-hidden="true"></i></h4>
+    <p>
+        <i class="fa fa-facebook-official w3-hover-text-indigo"></i>
+        <i class="fa fa-instagram w3-hover-text-purple"></i>
+        <i class="fa fa-snapchat w3-hover-text-yellow"></i>
+        <i class="fa fa-pinterest-p w3-hover-text-red"></i>
+        <i class="fa fa-twitter w3-hover-text-light-blue"></i>
+        <i class="fa fa-linkedin w3-hover-text-indigo"></i>
+    </p>
+    <p>Copyright@James Kong</p>
+</footer>
+</div>

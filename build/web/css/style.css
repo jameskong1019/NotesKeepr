@@ -1,0 +1,109 @@
+/* 
+    Created on : Nov 3, 2016, 12:38:31 PM
+    Author     : james
+*/
+
+body {
+    margin:0;
+    height:100vh;
+    /*background-color: #4CAF50;*/
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index : 3;
+    background: #f5b335;
+    transition: top 0.2s ease-in-out;
+}
+
+.nav-up {
+    top: -60px;
+}
+
+table
+{
+    /*border : 1px solid black;*/
+    overflow-x:auto;
+    text-align: center;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#resetPasswordForm{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th{
+    text-align: center;
+}
+table input[type="text"]
+{
+    /*width: 500px;*/
+}
+
+table#registrationForm input[type="text"], input[type="password"]
+{
+    width: 80%;
+}
+
+table#editUserForm input[type="text"], input[type="password"]
+{
+    width: 80%;
+}
+
+#login input
+{
+    width: 200px;
+}
+
+#error
+{
+    color: red;
+}
+
+#message{
+    color:blue;
+}
+
+#responsive-table
+{
+    overflow-x:auto;  
+    display: inline-block; 
+    width:100%;
+}
+
+table tr form {
+    display: inline;
+}
+/*div table tr td input[type="text"]
+{
+    width: 1000px;
+}*/
+
+button#removeCollaboratorButton{
+    color: red; 
+    border:0; 
+    outline:0;
+    background: none;
+}
+
+button#addCollboratorButton{
+    color: blue; 
+    border:0; 
+    outline:0;
+    background: none;
+}
+
+#fixedComposeButton {
+    position: fixed;
+    bottom: 100px;
+    right: 40px; 
+    text-decoration: none;
+}
+

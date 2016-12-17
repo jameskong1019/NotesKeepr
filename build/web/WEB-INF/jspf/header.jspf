@@ -1,0 +1,79 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- include libraries(jQuery, bootstrap) -->
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+        <!-- include summernote css/js-->
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css?ver=2">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/w3.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome-4.7.0/css/font-awesome.min.css">
+        <script src="${pageContext.request.contextPath}/js/main.js?ver=1"></script>
+
+        <title>Note Keepers</title>
+    </head>
+    <c:if test="${not empty loginUser}">
+        <body style="padding-top: 60px;">
+            <!--<body>-->
+            <header class="w3-teal">
+                <div id="sideNav" class="w3-hide w3-hide-large w3-hide-medium" style="top:0; position: fixed; ">
+                    <nav class="w3-sidenav w3-green w3-card-2 w3-animate-right" style="display:none;right:0;z-index:4;" id="rightMenu">
+                        <a class="w3-container w3-blue-grey w3-padding-large w3-hover-blue-grey w3-closenav" href="javascript:void(0)" onclick="closeRightMenu()">
+                            Close &nbsp; <i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+                            <c:if test="${not empty loginUser.roleList}">
+                            <a class="w3-container w3-hover-blue w3-padding-large" href="/NotesKeepr/admin/users"><i class="fa fa-users"></i>&nbsp;Manage users</a>
+                        </c:if>
+                        <a class="w3-container w3-hover-blue w3-padding-large" href="/NotesKeepr/notes"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;My notes</a>
+                        <a class="w3-container w3-hover-blue w3-padding-large" href="/NotesKeepr/collaboratedNotes"><i class="fa fa-address-book-o"></i>&nbsp;Shared notes</a>
+                        <a class="w3-container w3-hover-blue w3-padding-large" href="/NotesKeepr/account"><i class="fa fa-user-circle-o"></i>&nbsp;Account</a>
+                        <a class="w3-container w3-hover-blue w3-padding-large" href="/NotesKeepr/login?logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log out</a>
+
+                        <a class="w3-container w3-teal w3-hover-teal w3-padding-large"><h2>Notes Keeper <i class="fa fa-sticky-note-o" aria-hidden="true"></i></h2></a>
+                        <a class="w3-container w3-teal w3-hover-teal w3-padding-large w3-padding-bottom-100"><i class="fa fa-user"></i> Hello, ${loginUser.username}</a>
+                    </nav>
+                </div>            
+                <div class="w3-container">
+                    <h1>Notes Keeper <i class="fa fa-sticky-note-o" aria-hidden="true"></i></h1>    
+                </div>
+                <!--                <ul class="w3-navbar w3-green w3-padding w3-hide-medium w3-hide-large">
+                                    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+                                        <span href="javascript:void(0)" onclick="openRightMenu()" id="menuButton"><i class="fa fa-bars fa-2x"></i></span>
+                                    </li>
+                                    <li class="w3-hide-medium w3-hide-large w3-opennav w3-left">
+                                        <a class="w3-padding-0" href="/NotesKeepr/notes"><i class="fa fa-home fa-2x"></i></a>
+                                    </li>
+                                    <li class="w3-hide-medium w3-hide-large w3-opennav w3-center">
+                                        <div class="w3-padding-0"><h3>Test</h3></div>
+                                    </li>
+                                </ul>-->
+                <div class="w3-green w3-padding-large w3-margin-bottom w3-hide-medium w3-hide-large" style="max-width:1200px;">
+                    <span class="w3-opennav w3-right w3-hide-medium w3-hide-large" onclick="openRightMenu()" id="menuButton"><i class="fa fa-bars fa-2x"></i></span>
+                    <a class="w3-opennav w3-left w3-hide-medium w3-hide-large" href="/NotesKeepr/notes"><i class="fa fa-home fa-2x"></i></a>
+                    <div class="w3-center" id="navTitle"></div>
+                </div>
+                <ul class="w3-navbar w3-green w3-hide-small">
+                    <c:if test="${not empty loginUser.roleList}">
+                        <li class="w3-hide-small"><a href="/NotesKeepr/admin/users"><i class="fa fa-users"></i>&nbsp;Manage users</a>
+                        </li>
+                    </c:if>
+                    <li class="w3-hide-small"><a href="/NotesKeepr/notes"><i class="fa fa-pencil"></i>&nbsp;My notes</a></li>
+                    <li class="w3-hide-small"><a href="/NotesKeepr/collaboratedNotes"><i class="fa fa-address-book-o"></i>&nbsp;Shared notes</a></li>
+                    <li class="w3-hide-small"><a href="/NotesKeepr/account"><i class="fa fa-user-circle-o"></i>&nbsp;Account</a></li>
+                    <li class="w3-hide-small" style="float:right"><a href="/NotesKeepr/login?logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;logout</a></li>
+                    <li class="w3-hide-small" style="float:right; padding: 8px;"><i class="fa fa-user"></i> Hello, ${loginUser.username}</li>
+                </ul>
+            </header>
+        </c:if>
+
+
